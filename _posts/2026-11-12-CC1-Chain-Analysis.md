@@ -1,4 +1,4 @@
-<img width="1910" height="873" alt="image" src="https://github.com/user-attachments/assets/429fa16a-ef39-4ad9-8336-be8a9cb5b0f7" />---
+---
 layout: post
 title: "Java CC1 链底层原理分析与利用 Demo（LazyMap 变种）"
 date: 2026-11-12 12:00:00 +0800
