@@ -1,10 +1,12 @@
----
+<img width="1910" height="873" alt="image" src="https://github.com/user-attachments/assets/429fa16a-ef39-4ad9-8336-be8a9cb5b0f7" />---
 layout: post
-title: "Java CC1 链底层原理分析与利用 Demo"
+title: "Java CC1 链底层原理分析与利用 Demo（LazyMap 变种）"
 date: 2026-11-12 12:00:00 +0800
 categories: [Java安全, 反序列化]
 tags: [CC1, JVM, 反射]
 ---
+> 📌 **注：关于命名的说明**
+> 本文代码的核心执行引擎（`ChainedTransformer` 反射执行）是标准的 CC1 链条。但在触发方式上，这里使用了 `TiedMapEntry` 和 `LazyMap`。在 `ysoserial` 的官方分类中，这种触发机制通常被归类为 **CC6**。因为原版基于 `AnnotationInvocationHandler` 的 CC1 在 JDK 8u71 之后已被修复，所以本文使用的是目前更通用、生命力更强的变种触发法。
 > **⚠️ 免责声明（Disclaimer）**
 >
 > 本文及相关的代码（PoC/EXP）仅供**网络安全教育、防御技术研究及授权测试**使用。
@@ -17,7 +19,7 @@ tags: [CC1, JVM, 反射]
 
 ```Java
 
-// 这是一个CC1的demo
+// 这是一个基于 CC1 反射执行引擎（LazyMap/TiedMapEntry 触发）的 CC 链 Demo
 package org.example;
 
 import org.apache.commons.collections.Transformer;
